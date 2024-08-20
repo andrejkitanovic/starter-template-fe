@@ -34,7 +34,7 @@ body {
 }
 
 .splash-spinner .path {
-  stroke: #000;
+  stroke: #461383;
   stroke-linecap: round;
   animation: dash 1.5s ease-in-out infinite;
 }
@@ -44,7 +44,7 @@ body {
 }
 
 .loading-spinner .path {
-  stroke: #000;
+  stroke: #461383;
   stroke-linecap: round;
   animation: dash 1.5s ease-in-out infinite;
 }
@@ -87,7 +87,7 @@ body {
   -moz-transition: width 500ms ease-out 1s;
   -o-transition: width 500ms ease-out 1s;
   transition: width 500ms ease-out 1s;
-  background-color: #000;
+  background-color: #461383;
 }
 
 .indeterminate {
@@ -100,7 +100,7 @@ body {
   content: "";
   position: absolute;
   height: 100%;
-  background-color: #000;
+  background-color: #461383;
   animation: indeterminate_first 1.5s infinite ease-out;
 }
 
