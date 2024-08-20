@@ -1,4 +1,8 @@
-import { Dashboard as DashboardIcon } from "@mui/icons-material";
+import {
+  Dashboard as DashboardIcon,
+  FormatListBulleted,
+  TableRows,
+} from "@mui/icons-material";
 import { Box, Divider, MenuList, Typography } from "@mui/material";
 
 // import { FormattedMessage } from "react-intl";
@@ -27,6 +31,17 @@ const sidebarMenuListOperational: SidebarMenuListChild = [
     icon: <DashboardIcon />,
     text: "Dashboard",
     link: "/dashboard",
+  },
+  {
+    icon: <TableRows />,
+    text: "Table",
+    link: "/table",
+  },
+
+  {
+    icon: <FormatListBulleted />,
+    text: "Form",
+    link: "/form",
   },
 ];
 

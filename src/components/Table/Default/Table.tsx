@@ -1,11 +1,9 @@
-// import { Sort } from "@mui/icons-material";
 import React from "react";
 import {
   Skeleton,
   Stack,
   type TableProps as MUITableProps,
   type StackProps,
-  // TableSortLabel,
 } from "@mui/material";
 import type { QueryStatus } from "@tanstack/react-query";
 import { flexRender, type RowData, type Table } from "@tanstack/react-table";
@@ -44,10 +42,13 @@ const DefaultTanstackTable = <TData extends RowData>({
   return (
     <>
       <Stack
-        sx={{
-          overflowX: "auto",
-          borderBottom: "none",
-        }}
+        // sx={{
+        //   overflowX: "auto",
+        //   borderBottom: "none",
+        // }}
+        flex={1}
+        height="100%"
+        overflow="hidden"
         className="scrollbar-hidden"
       >
         <Stack
@@ -55,9 +56,12 @@ const DefaultTanstackTable = <TData extends RowData>({
           sx={{ minWidth: "100%", ...(TableProps?.sx || {}) }}
           flexDirection="column"
           width="max-content"
+          flex={1}
+          overflow="hidden"
+          height="100%"
         >
           {/* Header */}
-          <Stack>
+          <Stack flex={1}>
             {table.getHeaderGroups().map((headerGroup) => (
               <Stack key={headerGroup.id} direction="row">
                 {headerGroup.headers.map((header, index) => {
@@ -91,7 +95,12 @@ const DefaultTanstackTable = <TData extends RowData>({
           </Stack>
 
           {/* Body */}
-          <Stack className="table-body" direction="column">
+          <Stack
+            className="table-body scrollbar-hidden"
+            direction="column"
+            height="100%"
+            overflow="scroll"
+          >
             {status === "success" &&
               table.getRowModel().rows.map((row) => {
                 let additionalProps: StackProps = {};

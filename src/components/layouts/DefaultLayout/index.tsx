@@ -62,9 +62,10 @@ const DefaultLayout = ({
           height="100%"
           display="flex"
           flexDirection="column"
+          flex={1}
           sx={{
             overflow: "auto",
-            // paddingTop: isMobile ? "64px" : 0,
+            paddingTop: isMobile ? "64px" : 0,
           }}
           className="content"
         >
@@ -79,7 +80,10 @@ const DefaultLayout = ({
           </Alert> */}
           <Box
             component="main"
-            height="100vh"
+            height="100%"
+            flex={1}
+            overflow="scroll"
+            className="scrollbar-hidden"
             sx={{
               position: "relative",
               flexGrow: 1,

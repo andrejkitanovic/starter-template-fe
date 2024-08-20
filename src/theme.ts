@@ -166,18 +166,6 @@ const defaultThemeOptions: ThemeOptions = {
     },
     MuiAutocomplete: {
       styleOverrides: {
-        // TODO: most likely this gets overriden by some styles from MUIv4
-        // try removing when MUIv4 is gone
-        endAdornment: {
-          top: "inherit",
-        },
-        // TODO: remove when this gets merged https://github.com/mui/material-ui/issues/28465
-        root: {
-          ".MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
-            paddingRight: "39px",
-            // or padding: theme.spacing(X) if you want to be more precise & already defined your theme
-          },
-        },
         paper: {
           marginTop: "2px",
           border: "1px solid #C5C3C5",
