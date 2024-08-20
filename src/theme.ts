@@ -5,28 +5,15 @@ const defaultThemeOptions: ThemeOptions = {
   shadows: Array(25).fill("none") as Shadows,
   palette: {
     primary: {
-      main: "#000",
-      contrastText: "#ffffff",
-    },
-    success: {
-      main: "#34C759",
-    },
-    warning: {
-      main: "#FF8F5D",
-    },
-    error: {
-      main: "#E43232",
+      main: "#461383",
+      contrastText: "#f5f5f5",
     },
     background: {
-      default: undefined,
+      default: "#f5f5f5",
     },
   },
   typography: {
-    allVariants: {
-      color: undefined,
-    },
-    fontFamily:
-      '"Inter", "Roboto", "Raleway", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Raleway", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontSize: "4rem",
       fontWeight: 600,
@@ -56,41 +43,32 @@ const defaultThemeOptions: ThemeOptions = {
     },
     body2: {
       fontSize: "0.875rem",
-      color: "#9A9EAD",
     },
   },
   components: {
     MuiPaper: {
       styleOverrides: {
         root: {
-          // ".MuiAutocomplete-groupLabel": {
-          //   backgroundColor: "#e2dbc7",
-          // },
-          // borderRadius: 4,
-          // overflow: "hidden",
-          // borderColor: "#EEE",
-          // borderWidth: "1px",
-          // borderStyle: "solid",
+          ".MuiAutocomplete-groupLabel": {
+            backgroundColor: "#e2dbc7",
+          },
+          borderRadius: 4,
+          overflow: "hidden",
+          borderColor: "#EEE",
+          borderWidth: "1px",
+          borderStyle: "solid",
         },
       },
     },
     MuiDivider: {
       styleOverrides: {
         root: {
-          fontSize: "0.8rem",
-          backgroundColor: "transparent",
-          borderColor: "#EBEDEF",
-          opacity: 1,
+          backgroundColor: "#EEE",
+          opacity: 0.4,
         },
       },
     },
     MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "none",
-          borderRadius: "10px",
-        },
-      },
       defaultProps: {
         size: "small",
       },
@@ -132,7 +110,6 @@ const defaultThemeOptions: ThemeOptions = {
       },
       styleOverrides: {
         root: {
-          borderRadius: "10px!important",
           backgroundColor: "#fff",
           "&.Mui-disabled": {
             backgroundColor: "#f9f8f5",
@@ -142,7 +119,7 @@ const defaultThemeOptions: ThemeOptions = {
     },
     MuiInputLabel: {
       defaultProps: {
-        size: "small",
+        margin: "dense",
       },
     },
     MuiRadio: {
@@ -154,14 +131,6 @@ const defaultThemeOptions: ThemeOptions = {
       defaultProps: {
         size: "small",
       },
-      styleOverrides: {
-        thumb: {
-          color: "#000",
-        },
-        track: {
-          backgroundColor: "#ebedef",
-        },
-      },
     },
     MuiTextField: {
       defaultProps: {
@@ -170,60 +139,24 @@ const defaultThemeOptions: ThemeOptions = {
       },
     },
     MuiDialog: {
-      styleOverrides: {
-        paper: {
-          borderRadius: 10,
-        },
-      },
       defaultProps: {
         fullWidth: true,
-        maxWidth: "xs",
+        maxWidth: "sm",
       },
     },
-    // MuiTooltip: {
-    //   defaultProps: {
-    //     arrow: true,
-    //     // followCursor: true,
-    //   },
-    //   styleOverrides: {
-    //     arrow: {
-    //       color: "#333546",
-    //     },
-    //     tooltip: {
-    //       padding: 0,
-    //       maxWidth: "fit-content",
-    //       backgroundColor: "#333546",
-    //       border: "1px solid #535662",
-    //     },
-    //   },
-    // },
+    MuiTooltip: {
+      defaultProps: {
+        arrow: true,
+      },
+    },
     MuiList: {
       defaultProps: {
         dense: false,
       },
     },
-    // MuiModal: {
-    //   defaultProps: {},
-    //   styleOverrides: {
-    //     root: {
-    //       ".MuiPaper-root": {
-    //         backgroundColor: "#1b1c28",
-    //         backgroundImage: "none",
-    //         border: "1px solid #454a5d",
-    //       },
-    //     },
-    //   },
-    // },
     MuiMenuItem: {
       defaultProps: {
         dense: true,
-      },
-    },
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          whiteSpace: "nowrap",
-        },
       },
     },
     MuiTable: {
@@ -231,46 +164,13 @@ const defaultThemeOptions: ThemeOptions = {
         size: "small",
       },
     },
-    MuiMenu: {
-      styleOverrides: {
-        paper: {
-          marginTop: "2px",
-          borderRadius: "10px",
-          border: "1px solid #C5C3C5",
-          backgroundColor: "#FFFFFF",
-        },
-        list: {
-          ".MuiMenuItem-root": {
-            color: "#000",
-          },
-        },
-      },
-    },
-    MuiSkeleton: {
-      defaultProps: {
-        animation: "wave",
-      },
-      styleOverrides: {
-        root: {
-          // backgroundColor: "#EBEDEF",
-        },
-      },
-    },
-    MuiAccordion: {
-      defaultProps: {
-        disableGutters: true,
-      },
-    },
-    MuiAccordionSummary: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#F8F8F8",
-          borderRadius: "10px",
-        },
-      },
-    },
     MuiAutocomplete: {
       styleOverrides: {
+        // TODO: most likely this gets overriden by some styles from MUIv4
+        // try removing when MUIv4 is gone
+        endAdornment: {
+          top: "inherit",
+        },
         // TODO: remove when this gets merged https://github.com/mui/material-ui/issues/28465
         root: {
           ".MuiOutlinedInput-root.MuiInputBase-sizeSmall": {
@@ -280,19 +180,7 @@ const defaultThemeOptions: ThemeOptions = {
         },
         paper: {
           marginTop: "2px",
-          borderRadius: "10px",
           border: "1px solid #C5C3C5",
-          backgroundColor: "#FFFFFF",
-        },
-        listbox: {
-          // padding: "",
-        },
-        option: {
-          // paddingTop: "11px !important",
-          // paddingBottom: "11px !important",
-          // "&.Mui-focused": {
-          //   backgroundColor: "#fff !important",
-          // },
         },
       },
     },
@@ -310,8 +198,6 @@ const darkThemeOptions: () => ThemeOptions = () => {
   };
 
   themeOptions.palette.mode = "dark";
-  themeOptions.palette.background.default = "#1B1C28";
-  themeOptions.typography.allVariants.color = "#ffffff";
 
   return themeOptions;
 };
@@ -322,8 +208,6 @@ const lightThemeOptions: () => ThemeOptions = () => {
   };
 
   themeOptions.palette.mode = "light";
-  themeOptions.palette.background.default = "#ffffff";
-  themeOptions.typography.allVariants.color = "#000000";
 
   return themeOptions;
 };

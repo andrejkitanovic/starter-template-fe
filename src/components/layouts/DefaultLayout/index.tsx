@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, useMediaQuery, type Theme } from "@mui/material";
 
 import ScrollTopProvider from "components/providers/ScrollTopProvider";
 import type { WithChildren } from "utils/types";
 
 import Footer from "./Footer";
-
-// import SidebarDrawer from "./SidebarDrawer";
-// import Topbar from "./Topbar";
+import Sidebar from "./Sidebar/Sidebar";
+import Topbar from "./Topbar";
 
 interface DefaultLayoutProps {
   showBreadcrumbs: boolean;
@@ -21,22 +20,12 @@ const DefaultLayout = ({
     theme.breakpoints.down("md"),
   );
 
-  // const previousSidebarState: boolean | null =
-  //   localStorage.getItem("sidebar-state") &&
-  //   JSON.parse(localStorage.getItem("sidebar-state")!);
+  const [isDesktopDrawerShrinked, setIsDesktopDrawerShrinked] =
+    useState<boolean>(false);
+  const toggleDesktopDrawer = () => setIsDesktopDrawerShrinked((prev) => !prev);
 
-  // const [isDesktopDrawerShrinked, setIsDesktopDrawerShrinked] = useState(
-  //   previousSidebarState ?? false,
-  // );
-  // const toggleDesktopDrawer = () =>
-  //   setIsDesktopDrawerShrinked((prev) => {
-  //     const newSidebarState = !prev;
-  //     localStorage.setItem("sidebar-state", JSON.stringify(newSidebarState));
-  //     return !prev;
-  //   });
-
-  // const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
-  // const toggleMobileDrawer = () => setIsMobileDrawerOpen((prev) => !prev);
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState<boolean>(false);
+  const toggleMobileDrawer = () => setIsMobileDrawerOpen((prev) => !prev);
 
   return (
     <ScrollTopProvider>
@@ -52,21 +41,19 @@ const DefaultLayout = ({
         width="100vw"
       >
         <Box gridArea="sidebar">
-          {/* <SidebarDrawer
-            isMobile={isMobile}
+          <Sidebar
             isMobileDrawerOpen={isMobileDrawerOpen}
             toggleMobileDrawer={toggleMobileDrawer}
             isDesktopDrawerShrinked={isDesktopDrawerShrinked}
             toggleDesktopDrawer={toggleDesktopDrawer}
-          /> */}
+          />
         </Box>
 
         <Box gridArea="topbar">
-          {/* <Topbar
-            isMobile={isMobile}
-            showBreadcrumbs={showBreadcrumbs}
+          <Topbar
+            showBreadcrumbs={false}
             toggleMobileDrawer={toggleMobileDrawer}
-          /> */}
+          />
         </Box>
 
         <Box
@@ -77,7 +64,7 @@ const DefaultLayout = ({
           flexDirection="column"
           sx={{
             overflow: "auto",
-            paddingTop: isMobile ? "64px" : 0,
+            // paddingTop: isMobile ? "64px" : 0,
           }}
           className="content"
         >
@@ -92,12 +79,13 @@ const DefaultLayout = ({
           </Alert> */}
           <Box
             component="main"
+            height="100vh"
             sx={{
               position: "relative",
               flexGrow: 1,
               p: isMobile ? 2 : 3,
               py: isMobile ? 4 : 2,
-              backgroundColor: (t) => t.palette.background.default,
+              bgcolor: "background.default",
             }}
           >
             {children}

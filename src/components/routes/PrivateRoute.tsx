@@ -46,9 +46,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
 
   useEffect(() => {
     // if (!currentUser) return;
-
     // useMeStore.getState().setMe(currentUser);
-    useMeStore.getState().setMe({});
   }, []);
 
   if (me) {

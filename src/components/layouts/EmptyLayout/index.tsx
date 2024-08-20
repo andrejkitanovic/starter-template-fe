@@ -9,17 +9,7 @@ type EmptyLayoutProps = WithChildren<unknown>;
 const EmptyLayout: FC<EmptyLayoutProps> = ({ children }) => {
   return (
     <ScrollTopProvider>
-      <Box
-        //     display="grid"
-        //     gridTemplateAreas="
-        //     'sidebar topbar'
-        //     'sidebar content'
-        //   "
-        //     gridTemplateColumns="min-content 1fr"
-        //     gridTemplateRows="min-content 1fr"
-        height="100vh"
-        width="100vw"
-      >
+      <Box height="100vh" width="100vw">
         <Box
           gridArea="content"
           minHeight="100%"
