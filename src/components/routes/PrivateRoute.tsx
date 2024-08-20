@@ -1,19 +1,33 @@
 import { useEffect, type FC } from "react";
-import { Route, useHistory, type RouteProps } from "react-router-dom";
+import {
+  Route,
+  useHistory,
+  type match,
+  type RouteProps,
+} from "react-router-dom";
 
 import DefaultLayout from "components/layouts/DefaultLayout";
 import { LayoutSplashScreen } from "components/providers/SplashScreenProvider";
+import {
+  useBreadcrumbStore,
+  type Breadcrumb,
+} from "components/stores/BreadcrumbStore";
 import { useMeStore } from "components/stores/MeStore";
 import type { WithChildren } from "utils/types";
 
 interface PrivateRouteProps extends RouteProps {
-  // computedMatch?: match;
+  showBreadcrumbs?: boolean;
+  computedMatch?: match;
+  breadcrumbs?: Breadcrumb[];
   // requiredPermissions?: PermissionsType[];
   // requiredRole?: FilterPortalUsersDataRole[];
   layout?: ({ children }: WithChildren<unknown>) => any;
 }
 
 const PrivateRoute: FC<PrivateRouteProps> = ({
+  showBreadcrumbs = true,
+  computedMatch,
+  breadcrumbs,
   // requiredPermissions = [],
   // requiredRole = [],
   layout: Layout = DefaultLayout,
@@ -49,10 +63,18 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
     // useMeStore.getState().setMe(currentUser);
   }, []);
 
+  useEffect(() => {
+    if (!me || !breadcrumbs) return;
+
+    useBreadcrumbStore
+      .getState()
+      .setBreadcrumbs(breadcrumbs, computedMatch!.params);
+  }, [breadcrumbs, computedMatch, me]);
+
   if (me) {
     // if (hasRole(requiredRole)) {
     return (
-      <Layout showBreadcrumbs>
+      <Layout showBreadcrumbs={showBreadcrumbs}>
         <Route {...rest} />
       </Layout>
     );

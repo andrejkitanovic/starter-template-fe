@@ -1,5 +1,5 @@
 // import React, { Fragment, useState } from "react";
-import { useState, type FC } from "react";
+import { Fragment, useState, type FC } from "react";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,
@@ -15,7 +15,9 @@ import {
   type Theme,
 } from "@mui/material";
 import { useIsFetching } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
+import useBreadcrumbStore from "components/stores/BreadcrumbStore";
 import { useMeStore, useUserInitals } from "components/stores/MeStore";
 
 import UserDrawer from "./UserDrawer/UserDrawer";
@@ -25,15 +27,13 @@ interface TopbarProps {
   showBreadcrumbs: boolean;
 }
 
-const Topbar: FC<TopbarProps> = ({ toggleMobileDrawer }) => {
+const Topbar: FC<TopbarProps> = ({ toggleMobileDrawer, showBreadcrumbs }) => {
   const isMobile = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.down("md"),
   );
   const isFetching = useIsFetching();
 
-  //   const { breadcrumbs } = useBreadcrumbStore((s) => ({
-  //     breadcrumbs: s.breadcrumbs,
-  //   }));
+  const breadcrumbs = useBreadcrumbStore((s) => s.breadcrumbs);
 
   const [isUserDrawerOpen, setIsUserDrawerOpen] = useState<boolean>(false);
   const toggleUserDrawer = () => setIsUserDrawerOpen((prev) => !prev);
@@ -85,7 +85,7 @@ const Topbar: FC<TopbarProps> = ({ toggleMobileDrawer }) => {
               justifyContent: "space-between",
             }}
           >
-            {/* {showBreadcrumbs &&
+            {showBreadcrumbs &&
               breadcrumbs.map((breadcrumb, i, arr) => {
                 return (
                   <Fragment key={i}>
@@ -103,11 +103,7 @@ const Topbar: FC<TopbarProps> = ({ toggleMobileDrawer }) => {
                           },
                         }}
                       >
-                        {breadcrumb.translationId ? (
-                          <FormattedMessage id={breadcrumb.translationId} />
-                        ) : (
-                          breadcrumb.title
-                        )}
+                        {breadcrumb.title}
                       </Typography>
                     </Link>
                     {i < arr.length - 1 && (
@@ -124,7 +120,7 @@ const Topbar: FC<TopbarProps> = ({ toggleMobileDrawer }) => {
                     )}
                   </Fragment>
                 );
-              })} */}
+              })}
           </Box>
 
           <Stack direction="row" alignItems="center">

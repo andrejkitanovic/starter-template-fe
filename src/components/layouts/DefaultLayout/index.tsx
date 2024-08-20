@@ -13,7 +13,7 @@ interface DefaultLayoutProps {
 }
 
 const DefaultLayout = ({
-  // showBreadcrumbs,
+  showBreadcrumbs,
   children,
 }: WithChildren<DefaultLayoutProps>) => {
   const isMobile = useMediaQuery<Theme>((theme) =>
@@ -51,7 +51,7 @@ const DefaultLayout = ({
 
         <Box gridArea="topbar">
           <Topbar
-            showBreadcrumbs={false}
+            showBreadcrumbs={showBreadcrumbs}
             toggleMobileDrawer={toggleMobileDrawer}
           />
         </Box>

@@ -20,9 +20,24 @@ const App = () => {
         <AuthRoute exact component={SignInPage} path="/sign-in" />
 
         {/* CONTROLLERS */}
-        <PrivateRoute exact component={DashboardPage} path="/dashboard" />
-        <PrivateRoute exact component={TablePage} path="/table" />
-        <PrivateRoute exact component={FormPage} path="/form" />
+        <PrivateRoute
+          exact
+          component={DashboardPage}
+          path="/dashboard"
+          breadcrumbs={[{ title: "Dashboard", pathname: "/dashboard" }]}
+        />
+        <PrivateRoute
+          exact
+          component={TablePage}
+          path="/table"
+          breadcrumbs={[{ title: "Table", pathname: "/table" }]}
+        />
+        <PrivateRoute
+          exact
+          component={FormPage}
+          path="/form"
+          breadcrumbs={[{ title: "Form", pathname: "/form" }]}
+        />
 
         {/* REDIRECT */}
         <Redirect to="/dashboard" />

@@ -13,7 +13,16 @@ import FormikTimePicker from "components/forms/FormikTimePicker";
 
 const FormPage = () => {
   const formik = useFormik({
-    initialValues: {},
+    initialValues: {
+      textField: "",
+      numberField: null,
+      autcomplete: null,
+      autcompleteMultiple: [],
+      date: null,
+      dateTime: null,
+      time: null,
+      checkbox: false,
+    },
     onSubmit: () => {},
   });
 
