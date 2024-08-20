@@ -42,10 +42,6 @@ const DefaultTanstackTable = <TData extends RowData>({
   return (
     <>
       <Stack
-        // sx={{
-        //   overflowX: "auto",
-        //   borderBottom: "none",
-        // }}
         flex={1}
         height="100%"
         overflow="hidden"
@@ -53,7 +49,12 @@ const DefaultTanstackTable = <TData extends RowData>({
       >
         <Stack
           {...TableProps}
-          sx={{ minWidth: "100%", ...(TableProps?.sx || {}) }}
+          sx={{
+            minWidth: "100%",
+            ...(TableProps?.sx || {}),
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+          }}
           flexDirection="column"
           width="max-content"
           flex={1}
@@ -61,7 +62,7 @@ const DefaultTanstackTable = <TData extends RowData>({
           height="100%"
         >
           {/* Header */}
-          <Stack flex={1}>
+          <Stack flex={1} bgcolor="grey.200">
             {table.getHeaderGroups().map((headerGroup) => (
               <Stack key={headerGroup.id} direction="row">
                 {headerGroup.headers.map((header, index) => {
@@ -70,8 +71,9 @@ const DefaultTanstackTable = <TData extends RowData>({
                     <Stack
                       key={header.id}
                       sx={{
-                        height: 43,
-                        fontWeight: 700,
+                        height: 46,
+                        fontWeight: 600,
+                        fontSize: 15,
                         border: "none",
                         textAlign: header.column.columnDef.meta?.align,
                         minWidth: header.column.columnDef.minSize ?? "auto",
@@ -81,7 +83,7 @@ const DefaultTanstackTable = <TData extends RowData>({
                       direction="row"
                       alignItems="center"
                       justifyContent="flex-start"
-                      pl={isFirst ? 1 : 0}
+                      pl={isFirst ? 2 : 0}
                     >
                       {flexRender(
                         header.column.columnDef.header,
@@ -113,9 +115,10 @@ const DefaultTanstackTable = <TData extends RowData>({
                     key={row.id}
                     {...additionalProps}
                     sx={{
-                      backgroundColor: "#F8F8F8",
-                      borderRadius: 2,
-                      mb: 1,
+                      // backgroundColor: "#F8F8F8",
+                      // borderRadius: 2,
+                      borderBottom: "1px solid #E0E0E0",
+                      // mb: 1,
                       justifyContent: "flex-start",
                       ...(additionalProps?.sx || {}),
                     }}
@@ -139,7 +142,7 @@ const DefaultTanstackTable = <TData extends RowData>({
                             maxWidth: cell.column.columnDef.maxSize ?? "auto",
                             width: "100%",
                           }}
-                          pl={isFirst ? 1 : 0}
+                          pl={isFirst ? 2 : 0}
                         >
                           {flexRender(
                             cell.column.columnDef.cell,
@@ -175,7 +178,9 @@ const DefaultTanstackTable = <TData extends RowData>({
                   sx={{
                     backgroundColor: "#F8F8F8",
                     borderRadius: 2,
-                    mb: 1,
+                    mt: 1.5,
+                    // mt: index === 0 ? 1 : 0,
+                    height: 36,
                     width: "100%",
                     overflow: "hidden",
                     ...(restSkeletonProps?.sx || {}),

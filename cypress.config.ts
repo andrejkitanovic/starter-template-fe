@@ -4,7 +4,7 @@ require("dotenv").config();
 
 export default defineConfig({
   e2e: {
-    baseUrl: "http://localhost:3100",
+    baseUrl: "http://localhost:3101",
     setupNodeEvents(on, config) {
       // implement node event listeners here
 

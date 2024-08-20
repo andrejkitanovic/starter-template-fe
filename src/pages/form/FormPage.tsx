@@ -20,8 +20,9 @@ const FormPage = () => {
   return (
     <Stack
       component={Paper}
+      className="scrollbar-hidden"
       flexDirection="column"
-      overflow="hidden"
+      overflow="scroll"
       maxHeight="100%"
       flex={1}
       p={2}

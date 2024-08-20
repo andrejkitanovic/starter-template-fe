@@ -58,7 +58,7 @@ export default defineConfig(({ mode }) => {
       logOverride: { "this-is-undefined-in-esm": "silent" }, // prevents "Top-level this warning" https://github.com/vitejs/vite/issues/8644
     },
     server: {
-      port: 3100,
+      port: 3101,
     },
     test: {
       globals: true,
@@ -73,9 +73,9 @@ const manifest: Partial<VitePWAOptions>["manifest"] = {
   name: "Starter Template",
   icons: [
     {
-      src: "favicon.svg",
+      src: "favicon.ico",
       sizes: "32x32",
-      type: "image/svg",
+      type: "image/x-icon",
     },
     {
       src: "logo192.png",

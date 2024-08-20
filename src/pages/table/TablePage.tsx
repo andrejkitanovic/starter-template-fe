@@ -49,6 +49,7 @@ const TablePage = () => {
       <DefaultTanstackTable
         table={table}
         status="success"
+        // status="loading"
         totalResults={data.length}
       />
     </Stack>
