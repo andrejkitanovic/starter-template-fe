@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, Stack, Typography } from "@mui/material";
-// import destilleryLogo from "assets/logos/logo.svg";
-// import { FormattedMessage } from "react-intl";
+import Logo from "assets/icons/logo.png";
 import { Link as RouterLink } from "react-router-dom";
 
 const Footer = () => {
@@ -20,16 +19,16 @@ const Footer = () => {
       spacing={2}
     >
       <Stack direction="row" alignItems="center">
-        {/* <img
-          alt="destillery"
+        <img
+          alt="Logo"
           style={{
-            height: 20,
+            height: 25,
+            width: 25,
             objectFit: "contain",
             objectPosition: "0 50%",
-            paddingRight: 8,
           }}
-          src={destilleryLogo}
-        /> */}
+          src={Logo}
+        />
       </Stack>
 
       <Stack
