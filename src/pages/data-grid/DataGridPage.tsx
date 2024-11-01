@@ -19,8 +19,12 @@ import {
 } from "@mui/x-data-grid";
 import { map, range } from "lodash";
 
+import { renderEditProgress } from "components/datagrid/renderer/renderEditProgress";
+import { renderProgress } from "components/datagrid/renderer/renderProgress";
+
 const initialRows = map(range(1, 201), (index) => ({
   id: index,
+  progress: 1,
   name: `Row ${index}`,
 }));
 
@@ -99,6 +103,15 @@ const DataGridPage = () => {
         // header: "Name",
         // minSize: 140,
         // cell: ({ getValue }) => <TextFormatter value={getValue()} />,
+      },
+      {
+        field: "progress",
+        headerName: "Progress",
+        renderCell: renderProgress,
+        renderEditCell: renderEditProgress,
+        type: "number",
+        width: 120,
+        editable: true,
       },
       {
         field: "actions",
