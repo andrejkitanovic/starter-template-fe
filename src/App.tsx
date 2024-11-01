@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserHistory } from "history";
 import DashboardPage from "pages/dashboard/DashboardPage";
+import DataGridPage from "pages/data-grid/DataGridPage";
 import FormPage from "pages/form/FormPage";
 import SignInPage from "pages/sign-in/SignInPage";
 import TablePage from "pages/table/TablePage";
@@ -25,6 +26,12 @@ const App = () => {
           component={DashboardPage}
           path="/dashboard"
           breadcrumbs={[{ title: "Dashboard", pathname: "/dashboard" }]}
+        />
+        <PrivateRoute
+          exact
+          component={DataGridPage}
+          path="/data-grid"
+          breadcrumbs={[{ title: "Data Grid", pathname: "/data-grid" }]}
         />
         <PrivateRoute
           exact

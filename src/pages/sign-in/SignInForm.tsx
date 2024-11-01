@@ -1,5 +1,7 @@
+import { useState } from "react";
+import { VisibilityOffOutlined, VisibilityOutlined } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
-import { Box, Link } from "@mui/material";
+import { Box, IconButton, Link } from "@mui/material";
 import { Form as FormikForm, FormikProvider, useFormik } from "formik";
 import { Link as RouterLink, useHistory } from "react-router-dom";
 import * as yup from "yup";
@@ -9,6 +11,8 @@ import { useMeStore } from "components/stores/MeStore";
 
 const LoginForm = () => {
   const history = useHistory();
+
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
   const formik = useFormik({
     initialValues: {
@@ -36,17 +40,27 @@ const LoginForm = () => {
         <FormikForm data-cy="login-form">
           <FormikTextField
             name="email"
-            type="email"
             sx={{ mb: 1 }}
             label="Email"
             data-cy="email-input"
           />
           <FormikTextField
             name="password"
-            type="password"
+            type={passwordVisible ? "text" : "password"}
             sx={{ mb: 1 }}
             label="Password"
             data-cy="password-input"
+            InputProps={{
+              endAdornment: (
+                <IconButton onClick={() => setPasswordVisible((p) => !p)}>
+                  {passwordVisible ? (
+                    <VisibilityOffOutlined />
+                  ) : (
+                    <VisibilityOutlined />
+                  )}
+                </IconButton>
+              ),
+            }}
           />
           <Link
             component={RouterLink}

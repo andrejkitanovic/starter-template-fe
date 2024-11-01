@@ -1,5 +1,6 @@
 import {
   Dashboard as DashboardIcon,
+  DataArray,
   FormatListBulleted,
   TableRows,
 } from "@mui/icons-material";
@@ -33,11 +34,15 @@ const sidebarMenuListOperational: SidebarMenuListChild = [
     link: "/dashboard",
   },
   {
+    icon: <DataArray />,
+    text: "Data Grid",
+    link: "/data-grid",
+  },
+  {
     icon: <TableRows />,
     text: "Table",
     link: "/table",
   },
-
   {
     icon: <FormatListBulleted />,
     text: "Form",
