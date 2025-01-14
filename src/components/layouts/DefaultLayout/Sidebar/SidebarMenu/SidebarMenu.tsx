@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import {
   Dashboard as DashboardIcon,
   DataArray,
@@ -58,11 +59,11 @@ const sidebarMenuList: SidebarMenuList = [
   },
 ];
 
-interface Props {
+interface SidebarMenuProps {
   onClose?: () => void;
 }
 
-const SidebarMenu = ({ onClose }: Props) => {
+const SidebarMenu: FC<SidebarMenuProps> = ({ onClose }) => {
   return (
     <MenuList
       sx={{
@@ -71,6 +72,7 @@ const SidebarMenu = ({ onClose }: Props) => {
         maxHeight: "calc(100% - 45px)",
         pt: 0,
         msOverflowStyle: "none",
+
         "&::-webkit-scrollbar": {
           display: "none",
         },

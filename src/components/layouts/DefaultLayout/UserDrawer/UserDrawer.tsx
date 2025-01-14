@@ -1,5 +1,4 @@
 import { type FC } from "react";
-import { ListItemAvatar } from "@material-ui/core";
 import { ManageAccounts as ManageAccountsIcon } from "@mui/icons-material";
 import {
   Avatar,
@@ -7,6 +6,7 @@ import {
   Divider,
   Drawer,
   List,
+  ListItemAvatar,
   ListItemButton,
   ListItemText,
   Stack,

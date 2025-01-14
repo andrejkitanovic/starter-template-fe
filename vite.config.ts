@@ -51,6 +51,9 @@ export default defineConfig(({ mode }) => {
         devOptions: {
           enabled: process.env.DEV_SW === "true",
         },
+        workbox: {
+          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        },
         manifest,
       }),
     ],
