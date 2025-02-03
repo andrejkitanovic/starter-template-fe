@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useHistory } from "react-router";
 
-import { useMeStore, useUserInitals } from "components/stores/MeStore";
+import { useMeStore, userInitials } from "components/stores/MeStore";
 
 type UserDrawerProps = {
   isOpen: boolean;
@@ -30,7 +30,7 @@ const UserDrawer: FC<UserDrawerProps> = ({ isOpen, onClose }) => {
   };
 
   const name = useMeStore((s) => s.me?.name);
-  const userInitials = useUserInitals();
+  const initials = userInitials(name);
 
   return (
     <Drawer
@@ -60,7 +60,7 @@ const UserDrawer: FC<UserDrawerProps> = ({ isOpen, onClose }) => {
             bgcolor: "primary.main",
           }}
         >
-          {userInitials.toUpperCase()}
+          {initials.toUpperCase()}
         </Avatar>
         <Stack sx={{ minWidth: 0 }}>
           <Typography

@@ -1,7 +1,6 @@
 import { map, split } from "lodash";
 import { create } from "zustand";
-
-// import { PermissionsType } from "./permissions";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 type MeState = {
   token: string | null;
@@ -19,23 +18,40 @@ const ME_INITIAL_STATE: MeState = {
   me: null,
 };
 
-const useMeStore = create<MeState & MeActions>((set, _get) => ({
-  ...ME_INITIAL_STATE,
-  setToken: (token) => set({ token }),
-  setMe: (me) => set({ me }),
-  reset: () => set(ME_INITIAL_STATE),
-}));
+const useMeStore = create<MeState & MeActions>()(
+  persist(
+    (set, _get) => ({
+      ...ME_INITIAL_STATE,
+      setToken: (token) => set({ token }),
+      setMe: (me) => set({ me }),
+      reset: () => set(ME_INITIAL_STATE),
+    }),
+    {
+      name: "me-store",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        token: state.token,
+        me: state.me,
+      }),
+    },
+  ),
+);
 
 // for debugging
 // useMeStore.subscribe(console.log);
 
-export const useUserInitals = () => {
-  const name = useMeStore((s) => s.me?.name);
+// export const role = () => {
+//   const me = useMeStore.getState().me;
+//   const team = useMeStore.getState().team;
 
-  const userInitials =
-    map(split(name, " "), (word) => word.charAt(0)).join("") ?? "";
+//   if (!me || !team) return undefined;
+//   const workspace = find(me.workspaces, { team: team._id });
+//   return workspace?.role;
+// };
 
-  return userInitials;
+export const userInitials = (name: string | undefined) => {
+  if (!name) return "";
+  return map(split(name, " "), (word) => word.charAt(0)).join("") ?? "";
 };
 
 export { useMeStore };

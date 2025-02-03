@@ -1,11 +1,11 @@
 import React, { type FC } from "react";
 import { Box, Typography, type TypographyProps } from "@mui/material";
 
-interface ITextFormatter extends TypographyProps {
+interface TextFormatterProps extends TypographyProps {
   value: string;
 }
 
-const TextFormatter: FC<ITextFormatter> = ({ value, ...rest }) => {
+const TextFormatter: FC<TextFormatterProps> = ({ value, ...rest }) => {
   return (
     <Box>
       <Typography

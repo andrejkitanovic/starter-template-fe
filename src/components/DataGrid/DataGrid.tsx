@@ -14,6 +14,8 @@ import { find, map } from "lodash";
 
 import AsyncComponent from "components/AsyncComponent/AsyncComponent";
 
+// import { ThemeCheckbox } from "components/mui/ThemeCheckbox";
+
 import { useDataGridSelection } from "./DataGridSelectionProvider";
 
 type DataGridWrapperProps<T> = Omit<DataGridProps, "rows"> & {
@@ -118,7 +120,7 @@ const DataGridWrapper = <T,>({
             alignItems="center"
             px={2}
           >
-            <Typography color="#1c1c1c" fontStyle="italic" fontWeight={500}>
+            <Typography variant="labelSM" fontStyle="italic" fontWeight={500}>
               Showing{" "}
               <AsyncComponent
                 loading={initialLoading}

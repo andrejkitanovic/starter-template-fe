@@ -18,7 +18,7 @@ import { useIsFetching } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
 import useBreadcrumbStore from "components/stores/BreadcrumbStore";
-import { useMeStore, useUserInitals } from "components/stores/MeStore";
+import { useMeStore, userInitials } from "components/stores/MeStore";
 
 import UserDrawer from "./UserDrawer/UserDrawer";
 
@@ -39,7 +39,7 @@ const Topbar: FC<TopbarProps> = ({ toggleMobileDrawer, showBreadcrumbs }) => {
   const toggleUserDrawer = () => setIsUserDrawerOpen((prev) => !prev);
 
   const name = useMeStore((s) => s.me?.name);
-  const userInitials = useUserInitals();
+  const initials = userInitials(name);
 
   return (
     <AppBar
@@ -153,7 +153,7 @@ const Topbar: FC<TopbarProps> = ({ toggleMobileDrawer, showBreadcrumbs }) => {
                     }}
                     variant="rounded"
                   >
-                    {userInitials.toUpperCase()}
+                    {initials.toUpperCase()}
                   </Avatar>
                 </Stack>
               </Button>

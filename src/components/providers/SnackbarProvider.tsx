@@ -1,25 +1,23 @@
 import React, { type FC } from "react";
-import { SnackbarProvider as SnackbarActualProvider } from "notistack";
+import { ToastContainer } from "react-toastify";
 
-import SnackbarErrorComponent from "components/notistack/SnackbarErrorComponent";
-import SnackbarInfoComponent from "components/notistack/SnackbarInfoComponent";
-import SnackbarSuccessComponent from "components/notistack/SnackbarSuccessComponent";
 import type { WithChildren } from "utils/types";
+
+import "react-toastify/dist/ReactToastify.css";
 
 type SnackbarProviderProps = WithChildren<unknown>;
 
 const SnackbarProvider: FC<SnackbarProviderProps> = ({ children }) => {
   return (
-    <SnackbarActualProvider
-      maxSnack={3}
-      Components={{
-        success: SnackbarSuccessComponent,
-        error: SnackbarErrorComponent,
-        info: SnackbarInfoComponent,
-      }}
-    >
+    <>
+      <ToastContainer
+        autoClose={3_000}
+        limit={3}
+        position="bottom-center"
+        pauseOnHover
+      />
       {children}
-    </SnackbarActualProvider>
+    </>
   );
 };
 

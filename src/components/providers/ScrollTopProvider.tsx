@@ -1,23 +1,17 @@
 import { useEffect, type FC } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import type { WithChildren } from "utils/types";
 
 type ScrollTopProviderProps = WithChildren<unknown>;
 
 const ScrollTopProvider: FC<ScrollTopProviderProps> = ({ children }) => {
-  const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
-    const unlisten = history.listen(() => {
-      const content = document.querySelector(".content");
-      content?.scrollTo(0, 0);
-    });
-    return () => {
-      unlisten();
-    };
-    // eslint-disable-next-line
-  }, []);
+    const main = document.querySelector("main");
+    if (main) main.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return <>{children}</>;
 };

@@ -19,6 +19,11 @@ import SplashScreenProvider from "./components/providers/SplashScreenProvider";
 
 import "components/forms/yupErrorMessages";
 
+import DrawersStoreComponent from "components/drawers/DrawersStoreComponent";
+import ModalsStoreComponent from "components/modals/ModalsStoreComponent";
+
+import "components/Highcharts/highchartsOptions";
+
 type ProvidersProps = WithChildren<{ history: H.History }>;
 
 const Providers: FC<ProvidersProps> = ({ children, history }) => {
@@ -35,7 +40,11 @@ const Providers: FC<ProvidersProps> = ({ children, history }) => {
                     // @ts-ignore */}
                 <Router history={history}>
                   <SnackbarProvider>
-                    <ReactQueryProvider>{children}</ReactQueryProvider>
+                    <ReactQueryProvider>
+                      <ModalsStoreComponent />
+                      <DrawersStoreComponent />
+                      {children}
+                    </ReactQueryProvider>
                   </SnackbarProvider>
                 </Router>
               </Suspense>
